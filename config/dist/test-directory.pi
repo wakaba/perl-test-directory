@@ -1,0 +1,29 @@
+{
+    main_module_name => 'Test::Directory::Diff',
+    file_names => [qw(
+        lib/Test/Directory/Diff.pm
+        lib/Test/Directory/Diff.pod
+        t/test/directory-diff.t
+        lib/Test/Directory/Util.pm
+        lib/Test/Directory/Util.pod
+        t/test/directory-util.t
+        config/dist/test-directory.pi
+    )],
+    req_modules => {
+        'Test::More' => 0,
+        'Exporter::Lite' => 0,
+        'File::Temp' => 0,
+        'Encode' => 0,
+        'Path::Class' => 0,
+    },
+    t_req_modules => {
+        'Test::Test::More' => 0,
+    },
+    git => {
+        GitHub => q<https://github.com/wakaba/perl-test-directory>,
+    },
+    ci => {
+        "Travis CI" => q<http://travis-ci.org/wakaba/perl-test-directory>,
+    },
+};
+

@@ -37,6 +37,19 @@ test-main:
 	$(PERL_ENV) $(PROVE) t/test/*.t
 
 GENERATEPM = local/generatepm/bin/generate-pm-package
+GENERATEPM_ = $(GENERATEPM) --generate-json
 
 dist: generatepm
-	$(GENERATEPM) config/dist/hogehoge.pi dist/
+	$(GENERATEPM_) config/dist/test-directory.pi dist/
+
+dist-wakaba-packages: local/wakaba-packages dist
+	cp dist/*.json local/wakaba-packages/data/perl/
+	cp dist/*.tar.gz local/wakaba-packages/perl/
+	cd local/generatepm && $(MAKE) lperl
+	cd local/wakaba-packages && $(MAKE) all PERL="$(abspath ./local/generatepm/perl)"
+
+local/wakaba-packages: always
+	git clone "git@github.com:wakaba/packages.git" $@ || (cd $@ && git pull)
+	cd $@ && git submodule update --init
+
+always:

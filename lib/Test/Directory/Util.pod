@@ -46,6 +46,17 @@ temporary directory created by the function.
 
 L<Path::Class>, C<File::Temp>.
 
+=head1 DEVELOPMENT
+
+Latest version of the module is available from GitHub repository
+<https://github.com/wakaba/perl-test-directory>.
+
+Tests are automatically run by Travis CI
+<http://travis-ci.org/wakaba/perl-test-directory>.
+
+Likely outdated tarball package of the module is available at
+<http://wakaba.github.com/packages/perl/#Test-Directory-Diff>.
+
 =head1 HISTORY
 
 =over 4
