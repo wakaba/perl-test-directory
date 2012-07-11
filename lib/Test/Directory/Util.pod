@@ -1,0 +1,70 @@
+=head1 NAME
+
+Test::Directory::Util - Utility for testing file-system directories
+
+=head1 SYNOPSIS
+
+  use Test::Directory::Util;
+  
+  my $d = create_directory_for_test({
+      'file1.txt' => "\x{5000}\x{5001}\x{5002}",
+      'audio/file2.wav' => "\xA1\xA2\xA3\xA4",
+  });
+  ok -f "$d/$file1.txt";
+  ok -f "$d/audio/$file2.wav";
+
+=head1 DESCRIPTION
+
+The C<Test::Directory::Util> module provides a function that would be
+useful when writing test cases where file-system directories with
+numbers of files are in use.
+
+=head1 FUNCTIONS
+
+The C<Test::Directory::Util> module exports a function by default:
+
+=over 4
+
+=item $d = create_directory_for_test1({NAME => VALUE, NAME => VALUE, ...})
+
+Creates a temporary directory and puts files there.  Files are given
+as name-value pairs of the hash reference passed as the argument.  The
+name is used as file name in the directory.  It may be any string that
+can be interpreted by L<Path::Class> and the local file system in use
+(and operating system) - that is, the name can contain directory
+component.  Please take care that if the I<NAME> contains C<..> the
+file might be created outside of the temporary directory created by
+the function.  The value is used as the content of the file.  It may
+or may not be a utf8-flagged string.  Non-flagged byte strings are
+written as bytes and flagged character strings are written as utf8
+bytes.  The method returns a L<Path::Class> object that represents the
+temporary directory created by the function.
+
+=back
+
+=head1 SEE ALSO
+
+L<Path::Class>, C<File::Temp>.
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (2010-10-07)
+
+First version.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
+
+=head1 LICENSE
+
+Copyright 2010 Hatena <http://www.hatena.ne.jp/>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

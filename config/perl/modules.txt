@@ -1,0 +1,5 @@
+Encode
+Exporter::Lite
+File::Temp
+Path::Class
+Test::More

@@ -1,0 +1,60 @@
+=head1 NAME
+
+Test::Directory::Diff - Testing the equivalence of file-system directories
+
+=head1 SYNOPSIS
+
+  use Test::Directory::Diff;
+  
+  eq_or_diff_dir $dir1, $dir2, 'Compare content of two directories';
+
+=head1 DESCRIPTION
+
+The C<Test::Directory::Diff> module provides a test assertion to
+ensure that two given directories contain same content.  The
+equivalence is determined by the C<diff> command.
+
+=head1 FUNCTIONS
+
+The C<Test::Directory::Diff> module exports a test function by default:
+
+=over 4
+
+=item eq_or_diff_dir DIR1, DIR2, [NAME]
+
+Compares the contents of two directories.  Any differences that can be
+compared by the C<diff> command with C<-ur --text --new-file> options
+can be detected by this test.
+
+Note that the location of the C<diff> command and options can be
+customized by C<$Test::Directory::Diff::DIFF_COMAND> and
+C<@Test::Directory::Diff::DIFF_OPTION> variables.
+
+=back
+
+=head1 SEE ALSO
+
+C<diff>.
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (2010-10-07)
+
+First version.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>
+
+=head1 LICENSE
+
+Copyright 2010 Hatena <http://www.hatena.ne.jp/>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
